@@ -45,23 +45,28 @@ export default function LoginPage() {
           <h1 className="text-8xl font-bold text-white">ControlFlow</h1>
           <h2 className="py-3 text-6xl font-medium text-gray-400">Login</h2>
         </div>
-        <form onSubmit={handleSubmit} className="bg-blue-200 max-w-md mx-auto space-y-5 p-8">
-            {error && <div className="text-red-500 mb-4">{error}</div>}
-          <div>
-            <label htmlFor="userName"></label>
+        <form
+          onSubmit={handleSubmit}
+          className="max-w-md mx-auto space-y-5 p-8 text-center"
+        >
+          {error && <div className="text-red-500 mb-4">{error}</div>}
+          <div className="text-lg mt-4 mb-5">
+            <label htmlFor="userName" className=""></label>
             <input
               value={username}
               type="text"
               id="userName"
               name="user"
               placeholder="Usuário"
-              onChange={(e) => setUsername(e.target.value)} 
+              onChange={(e) => setUsername(e.target.value)}
               required
+              className="border-2 placeholder-white border-neutral-800 px-6 py-3 w-full"
             />
           </div>
-          <div>
+          <div className="mt-4 mb-5 text-lg">
             <label htmlFor="password"></label>
             <input
+              className="placeholder-white border-2 border-neutral-800 px-6 py-3 w-full"
               value={password}
               type="password"
               id="password"
@@ -70,16 +75,20 @@ export default function LoginPage() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <a href="">Esqueceu a senha?</a>
+          </div>
+          <div className="text-white">
+            <a href="" className="font-bold text-base hover:text-neutral-400 duration-100">
+              Esqueceu a senha?
+            </a>
           </div>
           <button
             type="submit"
-            className="bg-black text-3xl text-white border-none items-center content-center py-4 px-18 rounded-lg cursor-pointer font-bold hover:bg-gray-400 hover:text-black duration-200"
+            className="bg-black text-2xl text-white border-none items-center content-center py-4 px-18 rounded-lg cursor-pointer font-bold hover:bg-gray-400 hover:text-black duration-200"
           >
             Entrar
           </button>
-          <p>
-            Não tem uma conta? <a href="">Cadastre-se!</a>
+          <p className="text-white hover:scale-105 duration-75">
+            Não tem uma conta? <a href="" className="hover:font-mono" >Cadastre-se!</a>
           </p>
         </form>
       </div>
