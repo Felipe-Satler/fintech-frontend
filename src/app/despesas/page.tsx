@@ -1,7 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { Despesa } from "@/types";
 
 export default function DespesasPage() {
     const [loading, setLoading] = useState(true);
@@ -79,16 +80,16 @@ export default function DespesasPage() {
                       }).format(d.valorDespesa)}
                     </td>
                     <td className="">{d.dataDespesa}</td>
-                    <td className="">{d.descricao}</td>
+                    <td className="">{d.descricaoDespesa}</td>
                     <td className="">
                       <Link
-                        href={`/ despesas / ${d.id} /editar`}
+                        href={`/ despesas / ${d.idDespesa} /editar`}
                         className="px-3 py-1 bg-yellow-500 text-white rounded flex"
                       >
                         Editar
                       </Link>
                       <button
-                        onClick={() => handleDelete(d.id)}
+                        onClick={() => handleDelete(d.idDespesa)}
                         className="px-3 py-1 bg-red-600 text-white rounded flex"
                       >
                         {" "}

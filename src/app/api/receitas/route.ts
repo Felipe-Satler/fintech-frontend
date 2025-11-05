@@ -3,18 +3,18 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/contas`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/receitas`);
 
     if (!res.ok) {
-      throw new Error("Erro ao buscar contas");
+      throw new Error("Erro ao buscar receitas");
     }
 
     const data = await res.json();
     return NextResponse.json(data);
   } catch (error) {
-    console.error("Erro ao buscar contas:", error);
+    console.error("Erro ao buscar receitas:", error);
     return NextResponse.json(
-      { error: "Falha ao recuperar as contas" },
+      { error: "Falha ao recuperar as receitas" },
       { status: 500 }
     );
   }
@@ -24,7 +24,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/contas`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/receitas`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
