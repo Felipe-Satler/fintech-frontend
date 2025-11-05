@@ -49,16 +49,18 @@ export default function NovaDespesaPage() {
 
   return (
     <div className="container mx-auto p-8 max-w-2xl">
-      <h1 className="text-4xl font-bold mb-6">Nova Despesa</h1>
+      <h1 className="text-7xl font-bold mb-6 text-center text-white py-3.5">
+        Nova Despesa
+      </h1>
 
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        className="bg-transparent border-2 border-neutral-700 shadow-md rounded px-8 pt-6 pb-8 mb-4"
       >
-        <div className="mb-4">
+        <div className="mb-4 text-neutral-500">
           <label
             htmlFor="idConta"
-            className="block text-gray-700 font-bold mb-2"
+            className="block font-bold mb-2"
           >
             ID da Conta *
           </label>
@@ -67,15 +69,15 @@ export default function NovaDespesaPage() {
             id="idConta"
             value={idConta}
             onChange={(e) => setIdConta(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
 
-        <div className="mb-4">
+        <div className="mb-4 text-neutral-500">
           <label
             htmlFor="nomeDespesa"
-            className="block text-gray-700 font-bold mb-2"
+            className="block font-bold mb-2"
           >
             Nome da Despesa *
           </label>
@@ -84,15 +86,15 @@ export default function NovaDespesaPage() {
             id="nomeDespesa"
             value={nomeDespesa}
             onChange={(e) => setNomeDespesa(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
 
-        <div className="mb-4">
+        <div className="mb-4 text-neutral-500">
           <label
             htmlFor="valorDespesa"
-            className="block text-gray-700 font-bold mb-2"
+            className="block font-bold mb-2"
           >
             Valor da Despesa *
           </label>
@@ -102,15 +104,15 @@ export default function NovaDespesaPage() {
             step="0.01"
             value={valorDespesa}
             onChange={(e) => setValorDespesa(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
 
-        <div className="mb-4">
+        <div className="mb-4 text-neutral-500">
           <label
             htmlFor="dataDespesa"
-            className="block text-gray-700 font-bold mb-2"
+            className="block font-bold mb-2"
           >
             Data da Despesa *
           </label>
@@ -119,15 +121,15 @@ export default function NovaDespesaPage() {
             id="dataDespesa"
             value={dataDespesa}
             onChange={(e) => setDataDespesa(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
 
-        <div className="mb-6">
+        <div className="mb-6 text-neutral-500">
           <label
             htmlFor="descricaoDespesa"
-            className="block text-gray-700 font-bold mb-2"
+            className="block font-bold mb-2"
           >
             Descrição (Opcional)
           </label>
@@ -135,7 +137,7 @@ export default function NovaDespesaPage() {
             id="descricaoDespesa"
             value={descricaoDespesa}
             onChange={(e) => setDescricaoDespesa(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
             rows={3}
           />
         </div>
@@ -144,11 +146,11 @@ export default function NovaDespesaPage() {
           <button
             type="submit"
             disabled={loading}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:bg-gray-400"
+            className="text-xl cursor-pointer bg-green-600 hover:bg-green-700 text-white font-bold mt-3 py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:bg-gray-400"
           >
             {loading ? "Cadastrando..." : "Cadastrar Despesa"}
           </button>
-          <Link href="/despesas" className="text-blue-600 hover:underline">
+          <Link href="/despesas" className="text-blue-600 mt-6 text-lg hover:underline">
             Cancelar
           </Link>
         </div>

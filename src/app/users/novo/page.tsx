@@ -15,29 +15,29 @@ export default function NovoUserPage() {
     setLoading(true);
 
     try {
-      const despesa = {
+      const user = {
         nomeUsuario,
-        password: (password),
-        dataNasc: new Date(dataNasc).toISOString(),
+        senhaUsuario: password,
+        data_nasc: new Date(dataNasc).toISOString(),
       };
 
-      const res = await fetch("/api/despesas", {
+      const res = await fetch("/api/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(despesa),
+        body: JSON.stringify(user),
       });
 
       if (!res.ok) {
-        throw new Error("Erro ao criar despesa");
+        throw new Error("Erro ao criar usuário");
       }
 
-      alert("Despesa cadastrada com sucesso!");
-      router.push("/despesas");
+      alert("Usuário cadastrado com sucesso!");
+      router.push("/users");
     } catch (err) {
       console.error("Erro:", err);
-      alert("Erro ao cadastrar despesa. Verifique os dados e tente novamente.");
+      alert("Erro ao cadastrar usuário. Verifique os dados e tente novamente.");
     } finally {
       setLoading(false);
     }
@@ -45,60 +45,62 @@ export default function NovoUserPage() {
 
   return (
     <div className="container mx-auto p-8 max-w-2xl">
-      <h1 className="text-4xl font-bold mb-6">Novo User</h1>
+      <h1 className="text-7xl font-bold mb-6 text-center text-white py-3.5">
+        Novo Usuário
+      </h1>
 
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        className="bg-transparent border-2 border-neutral-700 shadow-md rounded px-8 pt-6 pb-8 mb-4"
       >
-        <div className="mb-4">
+        <div className="mb-4 text-neutral-500">
           <label
             htmlFor="nomeUsuario"
-            className="block text-gray-700 font-bold mb-2"
+            className="block font-bold mb-2"
           >
-            Nome da User *
+            Nome do Usuário *
           </label>
           <input
             type="text"
             id="nomeUsuario"
             value={nomeUsuario}
             onChange={(e) => setNomeUsuario(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
 
-        <div className="mb-4">
+        <div className="mb-4 text-neutral-500">
           <label
             htmlFor="password"
-            className="block text-gray-700 font-bold mb-2"
+            className="block font-bold mb-2"
           >
-            Senha do Usuário *
+            Senha *
           </label>
           <input
-            type="number"
+            type="password"
             id="password"
-            step="0.01"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
             required
+            minLength={6}
           />
         </div>
 
-        <div className="mb-4">
+        <div className="mb-4 text-neutral-500">
           <label
-            htmlFor="dataUser"
-            className="block text-gray-700 font-bold mb-2"
+            htmlFor="dataNasc"
+            className="block font-bold mb-2"
           >
-            Data do Usuário *
+            Data de Nascimento *
           </label>
           <input
             type="date"
-            id="dataUser"
+            id="dataNasc"
             value={dataNasc}
             onChange={(e) => setDataNasc(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
@@ -107,11 +109,11 @@ export default function NovoUserPage() {
           <button
             type="submit"
             disabled={loading}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:bg-gray-400"
+            className="text-xl cursor-pointer bg-green-600 hover:bg-green-700 text-white font-bold mt-3 py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:bg-gray-400"
           >
-            {loading ? "Cadastrando..." : "Cadastrar User"}
+            {loading ? "Cadastrando..." : "Cadastrar Usuário"}
           </button>
-          <Link href="/despesas" className="text-blue-600 hover:underline">
+          <Link href="/users" className="text-blue-600 mt-6 text-lg hover:underline">
             Cancelar
           </Link>
         </div>
