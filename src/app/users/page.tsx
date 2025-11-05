@@ -79,35 +79,34 @@ export default function UsersPage() {
       </div>
 
       <div className="text-center py-9">
-        <h1 className="text-6xl font-bold">ControlFlow</h1>
+        <h1 className="text-6xl font-bold text-white">ControlFlow</h1>
         <h2 className="py-3 text-4xl font-medium text-gray-600">Users</h2>
       </div>
 
       {loading ? (
         <p className="text-center">Carregando...</p>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="min-w-full bg-white border">
-            <thead className="bg-gray-100">
+        <div className="overflow-x-auto text-white">
+          <table className="min-w-full border text-center">
+            <thead className="">
               <tr>
                 <th className="px-4 py-2 border">ID</th>
                 <th className="px-4 py-2 border">Nome</th>
                 <th className="px-4 py-2 border">Senha</th>
+                <th className="px-4 py-2 border">Ações</th>
               </tr>
             </thead>
             <tbody>
               {users.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="text-center py-4 border">
+                  <td colSpan={6} className=" py-4 border">
                     Nenhum Usuário cadastrado.
                   </td>
                 </tr>
               ) : (
                 users.map((i) => (
-                  <tr key={i.idUsuario} className="hover:bg-gray-50">
-                    <td className="px-4 py-2 border text-center">
-                      {i.idUsuario}
-                    </td>
+                  <tr key={i.idUsuario} className="">
+                    <td className="px-4 py-2 border ">{i.idUsuario}</td>
                     <td className="px-4 py-2 border">{i.nomeUsuario}</td>
                     <td className="px-4 py-2 border">{i.senhaUsuario}</td>
                     <td className="px-4 py-2 border">

@@ -42,7 +42,7 @@ export default function HomePage() {
           className="bg-transparent border-2 border-neutral-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
         >
           <h3 className="text-xl font-bold mb-2 text-gray-300">Usuários</h3>
-          <p className="text-gray-600">Gerencie usuários do sistema</p>
+          <p className="text-gray-600">Gerencie seus usuários</p>
         </Link>
 
         {/* Card Contas */}
@@ -51,7 +51,7 @@ export default function HomePage() {
           className="p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow border-2 border-neutral-800"
         >
           <h3 className="text-xl font-bold mb-2 text-gray-300">Contas</h3>
-          <p className="text-gray-600">Administre suas contas bancárias</p>
+          <p className="text-gray-600">Administre suas contas cadastradas</p>
         </Link>
 
         {/* Card Receitas */}
@@ -60,7 +60,7 @@ export default function HomePage() {
           className="p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow border-2 border-neutral-800"
         >
           <h3 className="text-xl font-bold mb-2 text-gray-300">Receitas</h3>
-          <p className="text-gray-600">Registre suas receitas</p>
+          <p className="text-gray-600">Visualize suas receitas</p>
         </Link>
 
         {/* Card Despesas */}
@@ -69,7 +69,7 @@ export default function HomePage() {
           className="p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow border-2 border-neutral-800"
         >
           <h3 className="text-xl font-bold mb-2 text-gray-300">Despesas</h3>
-          <p className="text-gray-600">Controle suas despesas</p>
+          <p className="text-gray-600">Veja suas despesas</p>
         </Link>
       </div>
     </main>

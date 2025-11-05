@@ -1,4 +1,3 @@
-
 "use client";
 import { useState, useEffect, FormEvent } from "react";
 import { useRouter, useParams } from "next/navigation";
@@ -98,17 +97,17 @@ export default function EditarContaPage() {
   }
 
   return (
-    <div className="container mx-auto p-8 max-w-2xl">
-      <h1 className="text-4xl font-bold mb-6">Editar conta</h1>
+    <div className="container mx-auto p-8 max-w-2xl text-center">
+      <h1 className="text-6xl font-bold mb-5 mt-4 text-neutral-100">Editar conta</h1>
 
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        className="shadow-md rounded px-8 pt-6 pb-8 mb-4"
       >
         <div className="mb-4">
           <label
             htmlFor="idUsuario"
-            className="block text-gray-700 font-bold mb-2"
+            className="block text-neutral-600 font-bold mb-2"
           >
             ID da Conta *
           </label>
@@ -117,7 +116,7 @@ export default function EditarContaPage() {
             id="idUsuario"
             value={idUsuario}
             onChange={(e) => setIdUsuario(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border-2 border-neutral-800 rounded w-full py-2 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
@@ -125,7 +124,7 @@ export default function EditarContaPage() {
         <div className="mb-4">
           <label
             htmlFor="nomeConta"
-            className="block text-gray-700 font-bold mb-2"
+            className="block text-neutral-600 font-bold mb-2"
           >
             Nome da conta *
           </label>
@@ -134,7 +133,7 @@ export default function EditarContaPage() {
             id="nomeConta"
             value={nomeConta}
             onChange={(e) => setNomeConta(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
@@ -142,7 +141,7 @@ export default function EditarContaPage() {
         <div className="mb-4">
           <label
             htmlFor="saldoAtual"
-            className="block text-gray-700 font-bold mb-2"
+            className="block text-neutral-600 font-bold mb-2"
           >
             Valor da conta *
           </label>
@@ -152,7 +151,7 @@ export default function EditarContaPage() {
             step="0.01"
             value={saldoAtual}
             onChange={(e) => setSaldoAtual(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
@@ -160,7 +159,7 @@ export default function EditarContaPage() {
         <div className="mb-4">
           <label
             htmlFor="dataConta"
-            className="block text-gray-700 font-bold mb-2"
+            className="block text-neutral-600 font-bold mb-2"
           >
             Data da conta *
           </label>
@@ -169,7 +168,7 @@ export default function EditarContaPage() {
             id="dataConta"
             value={dataConta}
             onChange={(e) => setDataConta(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
@@ -178,11 +177,11 @@ export default function EditarContaPage() {
           <button
             type="submit"
             disabled={loading}
-            className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:bg-gray-400"
+            className="bg-green-600 hover:bg-green-700 text-white text-base font-bold py-2 px-4 mt-3 rounded focus:outline-none focus:shadow-outline disabled:bg-gray-400"
           >
             {loading ? "Salvando..." : "Salvar Alterações"}
           </button>
-          <Link href="/contas" className="text-blue-600 hover:underline">
+          <Link href="/contas" className="text-blue-600 text-base mt-6 hover:underline">
             Cancelar
           </Link>
         </div>

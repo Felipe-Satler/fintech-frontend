@@ -105,12 +105,12 @@ export default function EditarReceitaPage() {
 
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        className="shadow-md rounded px-8 pt-6 pb-8 mb-4"
       >
         <div className="mb-4">
           <label
             htmlFor="idConta"
-            className="block text-gray-700 font-bold mb-2"
+            className="block text-gray-500 font-bold mb-2"
           >
             ID da Conta *
           </label>
@@ -119,7 +119,7 @@ export default function EditarReceitaPage() {
             id="idConta"
             value={idConta}
             onChange={(e) => setIdConta(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border-2 border-neutral-700 rounded w-full py-2 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
@@ -127,7 +127,7 @@ export default function EditarReceitaPage() {
         <div className="mb-4">
           <label
             htmlFor="nomeReceita"
-            className="block text-gray-700 font-bold mb-2"
+            className="block text-neutral-600 font-bold mb-2"
           >
             Nome da Receita *
           </label>
@@ -136,7 +136,7 @@ export default function EditarReceitaPage() {
             id="nomeReceita"
             value={nomeReceita}
             onChange={(e) => setNomeReceita(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border-2 border-neutral-700 rounded w-full py-2 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
@@ -144,7 +144,7 @@ export default function EditarReceitaPage() {
         <div className="mb-4">
           <label
             htmlFor="valorReceita"
-            className="block text-gray-700 font-bold mb-2"
+            className="block text-neutral-600 font-bold mb-2"
           >
             Valor da Receita *
           </label>
@@ -154,7 +154,7 @@ export default function EditarReceitaPage() {
             step="0.01"
             value={valorReceita}
             onChange={(e) => setValorReceita(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border-2 border-neutral-700 rounded w-full py-2 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
@@ -162,7 +162,7 @@ export default function EditarReceitaPage() {
         <div className="mb-4">
           <label
             htmlFor="dataReceita"
-            className="block text-gray-700 font-bold mb-2"
+            className="block text-neutral-600 font-bold mb-2"
           >
             Data da Receita *
           </label>
@@ -171,7 +171,7 @@ export default function EditarReceitaPage() {
             id="dataReceita"
             value={dataReceita}
             onChange={(e) => setDataReceita(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border-2 border-neutral-700 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
@@ -179,7 +179,7 @@ export default function EditarReceitaPage() {
         <div className="mb-6">
           <label
             htmlFor="descricaoReceita"
-            className="block text-gray-700 font-bold mb-2"
+            className="block text-neutral-600 font-bold mb-2"
           >
             Descrição (Opcional)
           </label>
@@ -187,7 +187,7 @@ export default function EditarReceitaPage() {
             id="descricaoReceita"
             value={descricaoReceita}
             onChange={(e) => setDescricaoReceita(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline"
             rows={3}
           />
         </div>

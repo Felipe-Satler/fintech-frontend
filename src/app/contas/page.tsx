@@ -137,7 +137,7 @@ export default function ContasPage() {
                         </Link>
                         <button
                           onClick={() => handleDelete(c.idConta)}
-                          className="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700 cursor-pointer"
+                          className="px-3 py-1 bg-red-600 text-white rounded hover:bg-amber-800 cursor-pointer"
                         >
                           Excluir
                         </button>
