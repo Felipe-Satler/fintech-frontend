@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function NovaContaPage() {
-  const [idUsuario, setIdUsuario] = useState("");
   const [nomeConta, setNomeConta] = useState("");
   const [saldoAtual, setSaldoAtual] = useState("");
   const [dataCriacao, setDataCriacao] = useState("");
@@ -12,7 +11,6 @@ export default function NovaContaPage() {
   const router = useRouter();
 
   const conta = {
-    idUsuario: Number(idUsuario),
     nomeConta,
     saldoAtual: Number(saldoAtual),
     dataCriacao: new Date(dataCriacao).toISOString(),

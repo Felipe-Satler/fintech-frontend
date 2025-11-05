@@ -92,14 +92,14 @@ export default function UsersPage() {
               <tr>
                 <th className="px-4 py-2 border">ID</th>
                 <th className="px-4 py-2 border">Nome</th>
-                <th className="px-4 py-2 border">Contas</th>
+                <th className="px-4 py-2 border">Senha</th>
               </tr>
             </thead>
             <tbody>
               {users.length === 0 ? (
                 <tr>
                   <td colSpan={6} className="text-center py-4 border">
-                    Nenhuma Conta cadastrada.
+                    Nenhum Usuário cadastrado.
                   </td>
                 </tr>
               ) : (
@@ -109,6 +109,7 @@ export default function UsersPage() {
                       {i.idUsuario}
                     </td>
                     <td className="px-4 py-2 border">{i.nomeUsuario}</td>
+                    <td className="px-4 py-2 border">{i.senhaUsuario}</td>
                     <td className="px-4 py-2 border">
                       <div className="flex gap-2 justify-center">
                         <Link
@@ -119,7 +120,7 @@ export default function UsersPage() {
                         </Link>
                         <button
                           onClick={() => handleDelete(i.idUsuario)}
-                          className="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700"
+                          className="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700 cursor-pointer"
                         >
                           Excluir
                         </button>
