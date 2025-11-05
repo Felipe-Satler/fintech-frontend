@@ -4,7 +4,7 @@ import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
 import { Despesa } from "@/types";
 
-export default function EditarReceitaPage() {
+export default function EditarDespesaPage() {
   const [nomeDespesa, setNomeDespesa] = useState("");
   const [valorDespesa, setValorDespesa] = useState("");
   const [dataDespesa, setDataDespesa] = useState("");
@@ -23,17 +23,17 @@ export default function EditarReceitaPage() {
       return;
     }
 
-    fetchReceita();
+    fetchDespesa();
   }, [id, router]);
 
-  async function fetchReceita() {
+  async function fetchDespesa() {
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/despesas/${id}`
       );
 
       if (!res.ok) {
-        throw new Error("Erro ao buscar receita");
+        throw new Error("Erro ao buscar despesa");
       }
 
       const data: Despesa = await res.json();
@@ -41,12 +41,11 @@ export default function EditarReceitaPage() {
       setIdConta(String(data.idConta));
       setNomeDespesa(data.nomeDespesa);
       setValorDespesa(String(data.valorDespesa));
-      // Converte data para formato yyyy-MM-dd
       setDataDespesa(new Date(data.dataDespesa).toISOString().split("T")[0]);
       setDescricaoDespesa(data.descricaoDespesa || "");
     } catch (err) {
       console.error("Erro:", err);
-      alert("Erro ao carregar despesas");
+      alert("Erro ao carregar despesa");
       router.push("/despesas");
     } finally {
       setLoadingData(false);
@@ -78,10 +77,10 @@ export default function EditarReceitaPage() {
       );
 
       if (!res.ok) {
-        throw new Error("Erro ao atualizar receita");
+        throw new Error("Erro ao atualizar despesa");
       }
 
-      alert("Receita atualizada com sucesso!");
+      alert("Despesa atualizada com sucesso!");
       router.push("/despesas");
     } catch (err) {
       console.error("Erro:", err);
@@ -94,23 +93,25 @@ export default function EditarReceitaPage() {
   if (loadingData) {
     return (
       <div className="container mx-auto p-8 max-w-2xl">
-        <p className="text-center">Carregando...</p>
+        <p className="text-center text-white">Carregando...</p>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto p-8 max-w-2xl">
-      <h1 className="text-4xl font-bold mb-6">Editar despesa</h1>
+    <div className="container mx-auto p-8 max-w-2xl text-center">
+      <h1 className="text-6xl font-bold mb-5 mt-4 text-neutral-100">
+        Editar Despesa
+      </h1>
 
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        className="bg-transparent border-2 border-neutral-700 shadow-md rounded px-8 pt-6 pb-8 mb-4"
       >
         <div className="mb-4">
           <label
             htmlFor="idConta"
-            className="block text-gray-700 font-bold mb-2"
+            className="block text-neutral-500 font-bold mb-2"
           >
             ID da Conta *
           </label>
@@ -119,7 +120,7 @@ export default function EditarReceitaPage() {
             id="idConta"
             value={idConta}
             onChange={(e) => setIdConta(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border-2 border-neutral-800 rounded w-full py-2 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
@@ -127,16 +128,16 @@ export default function EditarReceitaPage() {
         <div className="mb-4">
           <label
             htmlFor="nomeDespesa"
-            className="block text-gray-700 font-bold mb-2"
+            className="block text-neutral-500 font-bold mb-2"
           >
-            Nome da despesa *
+            Nome da Despesa *
           </label>
           <input
             type="text"
             id="nomeDespesa"
             value={nomeDespesa}
             onChange={(e) => setNomeDespesa(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border-2 border-neutral-800 rounded w-full py-2 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
@@ -144,9 +145,9 @@ export default function EditarReceitaPage() {
         <div className="mb-4">
           <label
             htmlFor="valorDespesa"
-            className="block text-gray-700 font-bold mb-2"
+            className="block text-neutral-500 font-bold mb-2"
           >
-            Valor da despesa *
+            Valor da Despesa *
           </label>
           <input
             type="number"
@@ -154,7 +155,7 @@ export default function EditarReceitaPage() {
             step="0.01"
             value={valorDespesa}
             onChange={(e) => setValorDespesa(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border-2 border-neutral-800 rounded w-full py-2 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
@@ -162,16 +163,16 @@ export default function EditarReceitaPage() {
         <div className="mb-4">
           <label
             htmlFor="dataDespesa"
-            className="block text-gray-700 font-bold mb-2"
+            className="block text-neutral-500 font-bold mb-2"
           >
-            Data da Receita *
+            Data da Despesa *
           </label>
           <input
             type="date"
             id="dataDespesa"
             value={dataDespesa}
             onChange={(e) => setDataDespesa(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border-2 border-neutral-800 rounded w-full py-2 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
@@ -179,7 +180,7 @@ export default function EditarReceitaPage() {
         <div className="mb-6">
           <label
             htmlFor="descricaoDespesa"
-            className="block text-gray-700 font-bold mb-2"
+            className="block text-neutral-500 font-bold mb-2"
           >
             Descrição (Opcional)
           </label>
@@ -187,7 +188,7 @@ export default function EditarReceitaPage() {
             id="descricaoDespesa"
             value={descricaoDespesa}
             onChange={(e) => setDescricaoDespesa(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border-2 border-neutral-800 rounded w-full py-2 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline"
             rows={3}
           />
         </div>
@@ -196,11 +197,14 @@ export default function EditarReceitaPage() {
           <button
             type="submit"
             disabled={loading}
-            className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:bg-gray-400"
+            className="bg-green-600 hover:bg-green-700 text-white text-base font-bold py-2 px-4 mt-3 rounded focus:outline-none focus:shadow-outline disabled:bg-gray-400"
           >
             {loading ? "Salvando..." : "Salvar Alterações"}
           </button>
-          <Link href="/despesas" className="text-blue-600 hover:underline">
+          <Link
+            href="/despesas"
+            className="text-blue-600 text-base mt-6 hover:underline"
+          >
             Cancelar
           </Link>
         </div>

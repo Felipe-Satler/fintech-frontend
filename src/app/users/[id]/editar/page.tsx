@@ -4,11 +4,10 @@ import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
 import { User } from "@/types";
 
-export default function EditarReceitaPage() {
+export default function EditarUsuarioPage() {
   const [nomeUsuario, setNomeUsuario] = useState("");
   const [dataNasc, setDataNasc] = useState("");
   const [password, setPassword] = useState("");
-  const [idUsuario, setIdUsuario] = useState("");
   const [loading, setLoading] = useState(false);
   const [loadingData, setLoadingData] = useState(true);
   const router = useRouter();
@@ -22,29 +21,28 @@ export default function EditarReceitaPage() {
       return;
     }
 
-    fetchReceita();
+    fetchUsuario();
   }, [id, router]);
 
-  async function fetchReceita() {
+  async function fetchUsuario() {
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/despesas/${id}`
+        `${process.env.NEXT_PUBLIC_API_URL}/api/users/${id}` 
       );
 
       if (!res.ok) {
-        throw new Error("Erro ao buscar receita");
+        throw new Error("Erro ao buscar usuário");
       }
 
       const data: User = await res.json();
 
-      setIdUsuario(String(data.idUsuario));
       setNomeUsuario(data.nomeUsuario);
       setDataNasc(new Date(data.data_nasc).toISOString().split("T")[0]);
-      setPassword(data.senhaUsuario);
+      setPassword(""); 
     } catch (err) {
       console.error("Erro:", err);
-      alert("Erro ao carregar despesas");
-      router.push("/despesas");
+      alert("Erro ao carregar usuário");
+      router.push("/users");
     } finally {
       setLoadingData(false);
     }
@@ -55,29 +53,28 @@ export default function EditarReceitaPage() {
     setLoading(true);
 
     try {
-      const User = {
-        idUsuario: Number(idUsuario),
-        nomeUsuario: String(nomeUsuario),
-        DataNasc: new Date(dataNasc).toISOString(),
-        password: password
+      const usuario = {
+        nomeUsuario,
+        data_nasc: new Date(dataNasc).toISOString(),
+        ...(password && { senhaUsuario: password }) 
       };
 
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/Users/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/users/${id}`,
         {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(User),
+          body: JSON.stringify(usuario),
         }
       );
 
       if (!res.ok) {
-        throw new Error("Erro ao atualizar receita");
+        throw new Error("Erro ao atualizar usuário");
       }
 
-      alert("Receita atualizada com sucesso!");
+      alert("Usuário atualizado com sucesso!");
       router.push("/users");
     } catch (err) {
       console.error("Erro:", err);
@@ -90,84 +87,68 @@ export default function EditarReceitaPage() {
   if (loadingData) {
     return (
       <div className="container mx-auto p-8 max-w-2xl">
-        <p className="text-center">Carregando...</p>
+        <p className="text-center text-white">Carregando...</p>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto p-8 max-w-2xl">
-      <h1 className="text-4xl font-bold mb-6">Editar Usuário</h1>
+    <div className="container mx-auto p-8 max-w-2xl text-center">
+      <h1 className="text-6xl font-bold mb-5 mt-4 text-neutral-100">
+        Editar Usuário
+      </h1>
 
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        className="bg-transparent border-2 border-neutral-700 shadow-md rounded px-8 pt-6 pb-8 mb-4"
       >
         <div className="mb-4">
           <label
-            htmlFor="idUser"
-            className="block text-gray-700 font-bold mb-2"
-          >
-            ID do Usuário *
-          </label>
-          <input
-            type="number"
-            id="idUser"
-            value={idUsuario}
-            onChange={(e) => setIdUsuario(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            required
-          />
-        </div>
-
-        <div className="mb-4">
-          <label
             htmlFor="nomeUsuario"
-            className="block text-gray-700 font-bold mb-2"
+            className="block text-neutral-500 font-bold mb-2"
           >
-            Nome da User *
+            Nome do Usuário *
           </label>
           <input
             type="text"
             id="nomeUsuario"
             value={nomeUsuario}
             onChange={(e) => setNomeUsuario(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border-2 border-neutral-800 rounded w-full py-2 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
 
         <div className="mb-4">
           <label
-            htmlFor="valorUser"
-            className="block text-gray-700 font-bold mb-2"
+            htmlFor="password"
+            className="block text-neutral-500 font-bold mb-2"
           >
-            Valor da User *
+            Nova Senha (deixe em branco para não alterar)
           </label>
           <input
-            type="number"
-            id="valorUser"
-            step="0.01"
+            type="password"
+            id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            required
+            className="shadow appearance-none border-2 border-neutral-800 rounded w-full py-2 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline"
+            minLength={6}
           />
         </div>
 
         <div className="mb-4">
           <label
-            htmlFor="dataUser"
-            className="block text-gray-700 font-bold mb-2"
+            htmlFor="dataNasc"
+            className="block text-neutral-500 font-bold mb-2"
           >
-            Data da Receita *
+            Data de Nascimento *
           </label>
           <input
             type="date"
-            id="dataUser"
+            id="dataNasc"
             value={dataNasc}
             onChange={(e) => setDataNasc(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border-2 border-neutral-800 rounded w-full py-2 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
@@ -176,11 +157,11 @@ export default function EditarReceitaPage() {
           <button
             type="submit"
             disabled={loading}
-            className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:bg-gray-400"
+            className="bg-green-600 hover:bg-green-700 text-white text-base font-bold py-2 px-4 mt-3 rounded focus:outline-none focus:shadow-outline disabled:bg-gray-400"
           >
             {loading ? "Salvando..." : "Salvar Alterações"}
           </button>
-          <Link href="/despesas" className="text-blue-600 hover:underline">
+          <Link href="/users" className="text-blue-600 text-base mt-6 hover:underline">
             Cancelar
           </Link>
         </div>

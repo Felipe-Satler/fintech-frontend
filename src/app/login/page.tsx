@@ -77,7 +77,7 @@ export default function LoginPage() {
             />
           </div>
           <div className="text-white">
-            <a href="" className="font-bold text-base hover:text-neutral-400 duration-100">
+            <a href="/not-found" className="font-bold text-base hover:text-neutral-400 duration-100">
               Esqueceu a senha?
             </a>
           </div>
@@ -88,7 +88,7 @@ export default function LoginPage() {
             Entrar
           </button>
           <p className="text-white hover:scale-105 duration-75">
-            Não tem uma conta? <a href="" className="hover:font-mono" >Cadastre-se!</a>
+            Não tem uma conta? <a href="/not-found" className="hover:font-mono" >Cadastre-se!</a>
           </p>
         </form>
       </div>

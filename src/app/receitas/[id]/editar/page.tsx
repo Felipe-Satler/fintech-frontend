@@ -41,7 +41,6 @@ export default function EditarReceitaPage() {
       setIdConta(String(data.idConta));
       setNomeReceita(data.nomeReceita);
       setValorReceita(String(data.valorReceita));
-      // Converte data para formato yyyy-MM-dd
       setDataReceita(new Date(data.dataReceita).toISOString().split("T")[0]);
       setDescricaoReceita(data.descricaoReceita || "");
     } catch (err) {
@@ -94,23 +93,25 @@ export default function EditarReceitaPage() {
   if (loadingData) {
     return (
       <div className="container mx-auto p-8 max-w-2xl">
-        <p className="text-center">Carregando...</p>
+        <p className="text-center text-white">Carregando...</p>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto p-8 max-w-2xl">
-      <h1 className="text-4xl font-bold mb-6">Editar Receita</h1>
+    <div className="container mx-auto p-8 max-w-2xl text-center">
+      <h1 className="text-6xl font-bold mb-5 mt-4 text-neutral-100">
+        Editar Receita
+      </h1>
 
       <form
         onSubmit={handleSubmit}
-        className="shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        className="bg-transparent border-2 border-neutral-700 shadow-md rounded px-8 pt-6 pb-8 mb-4"
       >
         <div className="mb-4">
           <label
             htmlFor="idConta"
-            className="block text-gray-500 font-bold mb-2"
+            className="block text-neutral-500 font-bold mb-2"
           >
             ID da Conta *
           </label>
@@ -119,7 +120,7 @@ export default function EditarReceitaPage() {
             id="idConta"
             value={idConta}
             onChange={(e) => setIdConta(e.target.value)}
-            className="shadow appearance-none border-2 border-neutral-700 rounded w-full py-2 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border-2 border-neutral-800 rounded w-full py-2 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
@@ -127,7 +128,7 @@ export default function EditarReceitaPage() {
         <div className="mb-4">
           <label
             htmlFor="nomeReceita"
-            className="block text-neutral-600 font-bold mb-2"
+            className="block text-neutral-500 font-bold mb-2"
           >
             Nome da Receita *
           </label>
@@ -136,7 +137,7 @@ export default function EditarReceitaPage() {
             id="nomeReceita"
             value={nomeReceita}
             onChange={(e) => setNomeReceita(e.target.value)}
-            className="shadow appearance-none border-2 border-neutral-700 rounded w-full py-2 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border-2 border-neutral-800 rounded w-full py-2 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
@@ -144,7 +145,7 @@ export default function EditarReceitaPage() {
         <div className="mb-4">
           <label
             htmlFor="valorReceita"
-            className="block text-neutral-600 font-bold mb-2"
+            className="block text-neutral-500 font-bold mb-2"
           >
             Valor da Receita *
           </label>
@@ -154,7 +155,7 @@ export default function EditarReceitaPage() {
             step="0.01"
             value={valorReceita}
             onChange={(e) => setValorReceita(e.target.value)}
-            className="shadow appearance-none border-2 border-neutral-700 rounded w-full py-2 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border-2 border-neutral-800 rounded w-full py-2 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
@@ -162,7 +163,7 @@ export default function EditarReceitaPage() {
         <div className="mb-4">
           <label
             htmlFor="dataReceita"
-            className="block text-neutral-600 font-bold mb-2"
+            className="block text-neutral-500 font-bold mb-2"
           >
             Data da Receita *
           </label>
@@ -171,7 +172,7 @@ export default function EditarReceitaPage() {
             id="dataReceita"
             value={dataReceita}
             onChange={(e) => setDataReceita(e.target.value)}
-            className="shadow appearance-none border-2 border-neutral-700 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border-2 border-neutral-800 rounded w-full py-2 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
@@ -179,7 +180,7 @@ export default function EditarReceitaPage() {
         <div className="mb-6">
           <label
             htmlFor="descricaoReceita"
-            className="block text-neutral-600 font-bold mb-2"
+            className="block text-neutral-500 font-bold mb-2"
           >
             Descrição (Opcional)
           </label>
@@ -187,7 +188,7 @@ export default function EditarReceitaPage() {
             id="descricaoReceita"
             value={descricaoReceita}
             onChange={(e) => setDescricaoReceita(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border-2 border-neutral-800 rounded w-full py-2 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline"
             rows={3}
           />
         </div>
@@ -196,11 +197,11 @@ export default function EditarReceitaPage() {
           <button
             type="submit"
             disabled={loading}
-            className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:bg-gray-400"
+            className="bg-green-600 hover:bg-green-700 text-white text-base font-bold py-2 px-4 mt-3 rounded focus:outline-none focus:shadow-outline disabled:bg-gray-400"
           >
             {loading ? "Salvando..." : "Salvar Alterações"}
           </button>
-          <Link href="/receitas" className="text-blue-600 hover:underline">
+          <Link href="/receitas" className="text-blue-600 text-base mt-6 hover:underline">
             Cancelar
           </Link>
         </div>
