@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+ControlFlow - Sistema Fintech
 
-## Getting Started
+Sistema de controle financeiro pessoal relativo à atividade do Capítulo 14 da Fase 7.
 
-First, run the development server:
+---
 
-```bash
+Antes de começar, certifique-se de ter instalado:
+
+- Java JDK 17 ou superior
+- Maven 3.8+
+- Node.js 20.9+ (LTS)
+- npm ou pnpm
+- Acesso à instância Oracle da FIAP 
+
+---
+
+Backend
+
+1. Descompacte o arquivo zip exportado e abra na sua IDE 
+
+
+2. Configure o banco de dados:
+Edite o arquivo "src/main/resources/application.properties":
+
+spring.datasource.url=jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL
+spring.datasource.username=seu_usuario_fiap
+spring.datasource.password=sua_senha_fiap
+(no meu caso, RM561557, 200306)
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+
+3. Compile e execute:
+bash
+mvn clean install
+mvn spring-boot:run
+
+
+O backend estará disponível em: http://localhost:8080
+
+---
+
+Frontend
+
+1. Descompacte o arquivo zip exportado e abra na sua IDE
+
+2. Instale as dependências:
+bash
+npm install
+(ou)
+pnpm install
+
+3. Execute:
+
+bash
 npm run dev
-# or
-yarn dev
-# or
+(ou)
 pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Dados de Autenticação:
+Para acessar o sistema, utilize os dados a seguir:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Usuário: "admin"  
+Senha: "admin123"
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+Em caso de dúvidas ou problemas:
+1. Verifique se todas as dependências estão instaladas
+2. Confirme que o backend está rodando antes do frontend
+3. Verifique as variáveis de ambiente no ".env.local"
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
